@@ -2,9 +2,9 @@ export default class Route {
   routeContent = null;
   activeRoute = 'users';
   pages = {
-    users: () => import('./users.module.js'),
-    user: () => import('./user.module.js'),
-    repos: () => import('./repos.module.js'),
+    users: () => import('../pages/Users.js'),
+    user: () => import('../pages/User.js'),
+    repos: () => import('../pages/Repos.js'),
   };
 
   constructor() {
@@ -14,7 +14,7 @@ export default class Route {
   }
 
   showEmptyPage() {
-    import('./empty.module.js').then(module => {
+    import('../pages/Empty.js').then(module => {
       const emptyPage = new module.default();
       this.routeContent.innerHTML = emptyPage.initTemplate();
     })    

@@ -1,13 +1,9 @@
-const searchBox = (searchPlaceholder) => `
-  <div class="search-box">
-    <input id="search-input" placeholder=${searchPlaceholder} />
-  </div>
-`;
+import SearchBoxTemplate from './SearchBoxTemplate.js';
 
-export default ({ searchPlaceholder, noDataMessage, showSearchBox = true }) => `
+export default ({ searchPlaceholder = 'Search', noDataMessage = 'No data', showSearchBox = true }) => `
   <div class="page-template">
 
-    ${showSearchBox ? searchBox(searchPlaceholder) : ''}
+    ${showSearchBox ? SearchBoxTemplate(searchPlaceholder) : ''}
 
     <div class="action-bar">
       <h2 id="result-count">0 results</h2>

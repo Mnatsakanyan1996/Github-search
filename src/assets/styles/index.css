@@ -15,6 +15,11 @@ body {
   box-sizing: border-box;
 }
 
+.page-template {
+  padding: 20px;
+  height: 100vh;
+}
+
 #loader-box {
   position: absolute;
   left: 0;
@@ -93,11 +98,6 @@ body {
 
 /* Users */
 
-.page-template {
-  padding: 20px;
-  height: 100vh;
-}
-
 .search-box {
   border: 1px solid;
   border-radius: 5px;
@@ -142,3 +142,47 @@ body {
 }
 
 /* Users end */
+
+/* User details */
+
+.user-details {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid;
+}
+
+#user-avatar {
+  margin-right: 25px;
+}
+
+#user-avatar > img {
+  height: 200px;
+  border-radius: 50%;
+}
+
+#user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* User details - end */
+
+/* Repos */
+.repo-item {
+  display: flex;
+  margin-bottom: 25px;
+  border: 1px solid;
+}
+
+.repo-item > img {
+  width: 50px;
+  margin-right: 25px;
+}
+
+.repo-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Repos - end */

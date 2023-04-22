@@ -1,4 +1,4 @@
-import Route from './modules/router.module.js';
+import Route from './routes/index.js';
 
 function init() {
   new Route();

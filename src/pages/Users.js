@@ -1,7 +1,8 @@
 import BasicPageClass from '../common/BasicPage.js';
 import PageTemplate from '../templates/PageTemplate.js'; 
+import UserTemplate from '../templates/UserTemplate.js';
 
-export default class ReposPage extends BasicPageClass {
+export default class UserPage extends BasicPageClass {
   searchInput;
   searchQuery = '';
 
@@ -26,8 +27,7 @@ export default class ReposPage extends BasicPageClass {
     this.showLoader();
     this.toggleNoDataMessage(false);
 
-    const data = await this.fetchService.getData(`https://api.github.com/search/repositories?q=${this.searchQuery}&page=${this.currentPage}&per_page=${this.maxItemCount}`);
-    console.log('data: ', data);
+    const data = await this.fetchService.getData(`https://api.github.com/search/users?q=${this.searchQuery}&page=${this.currentPage}&per_page=${this.maxItemCount}`);
 
     this.updateTotalCount(data.total_count);
 
@@ -40,16 +40,7 @@ export default class ReposPage extends BasicPageClass {
     if (data?.items?.length) {
       data.items.forEach(element => {
         const userItem = document.createElement('div');
-        userItem.classList.add('search-list-item');
-        userItem.innerHTML = `
-          <a href=${element.html_url}>
-            <div class="user-item">
-              <img src=${element.owner.avatar_url} />
-              <h1>${element.full_name}</h1>
-              <h2>${element.description}</h2>
-            </div>
-          </a>
-        `;
+        userItem.innerHTML = UserTemplate(element);
         resultListElement.appendChild(userItem);
       });
     } else {
@@ -60,7 +51,7 @@ export default class ReposPage extends BasicPageClass {
   }
 
   template = PageTemplate({
-    searchPlaceholder: 'Enter repository name',
-    noDataMessage: 'Your search did not match any repositories',
+    searchPlaceholder: 'Enter username',
+    noDataMessage: 'Your search did not match any users',
   });
 }
