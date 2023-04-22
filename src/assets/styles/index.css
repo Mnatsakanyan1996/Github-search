@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  background-color: #f6f8fa;
 }
 
 * {
@@ -94,6 +95,7 @@ body {
 
 .users-page {
   padding: 20px;
+  height: 100vh;
 }
 
 .search-box {
@@ -107,12 +109,36 @@ body {
   width: 100%;
 }
 
-#user-not-found {
+#no-data {
   display: none;
 }
 
-#user-not-found.show {
+#no-data.show {
   display: block;
+}
+
+.action-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.user-item {
+  display: flex;
+  margin-bottom: 25px;
+  border: 1px solid;
+}
+
+.user-item > img {
+  width: 50px;
+  margin-right: 25px;
 }
 
 /* Users end */
