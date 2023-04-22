@@ -1,4 +1,5 @@
 import BasicPageClass from '../common/BasicPage.js';
+import PageTemplate from '../templates/PageTemplate.js'; 
 
 export default class ReposPage extends BasicPageClass {
   searchInput;
@@ -41,7 +42,7 @@ export default class ReposPage extends BasicPageClass {
         const userItem = document.createElement('div');
         userItem.classList.add('search-list-item');
         userItem.innerHTML = `
-          <a href="#user?userName=${element.login}">
+          <a href=${element.html_url}>
             <div class="user-item">
               <img src=${element.owner.avatar_url} />
               <h1>${element.full_name}</h1>
@@ -58,28 +59,8 @@ export default class ReposPage extends BasicPageClass {
     this.hideLoader();
   }
 
-  template = `
-    <div class="users-page">
-      <div class="search-box">
-        <input id="search-input" placeholder="Enter username" />
-      </div>
-
-      <div class="action-bar">
-        <h2 id="result-count">
-          0 results
-        </h2>
-
-        <div class="pagination-control">
-          <button id="btn-prev">Prev</button>
-          <button id="btn-next">next</button>
-        </div>
-      </div>
-
-      <div id="result-list"></div>
-
-      <div id="no-data">
-        <h1>Your search did not match any users</h1>
-      </div>
-    </div>
-  `;
+  template = PageTemplate({
+    searchPlaceholder: 'Enter repository name',
+    noDataMessage: 'Your search did not match any repositories',
+  });
 }

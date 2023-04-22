@@ -1,7 +1,7 @@
 import BasicPageClass from '../common/BasicPage.js';
 import { getParameterByName } from '../utils/helpers.js'; 
 
-export default class ReposPage extends BasicPageClass {
+export default class UserDetailsPage extends BasicPageClass {
   userDetails = null;
   userNotFound = null;
   repository = [];

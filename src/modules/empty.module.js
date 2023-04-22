@@ -1,6 +1,6 @@
 import BasicPageClass from '../common/BasicPage.js';
 
-export default class ReposPage extends BasicPageClass {
+export default class EmptyPage extends BasicPageClass {
   constructor () {
     super();
   }
