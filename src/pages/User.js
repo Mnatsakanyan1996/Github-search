@@ -1,9 +1,11 @@
 import BasicPageClass from '../common/BasicPage.js';
-import { getParameterByName } from '../utils/helpers.js';
+
 import PageTemplate from '../templates/PageTemplate.js';
 import RepoTemplate from '../templates/RepoTemplate.js';
 import UserInfoTemplate from '../templates/UserInfoTemplate.js';
+
 import { USER_API } from '../constants/api.js';
+import { getParameterByName } from '../utils/helpers.js';
 
 export default class UserDetailsPage extends BasicPageClass {
   constructor() {
@@ -11,11 +13,12 @@ export default class UserDetailsPage extends BasicPageClass {
     this.getUserDetails();
   }
 
+  // This function is called when template rendering ends
   onInit() {
     const backBtn = document.getElementById('back-btn');
     backBtn.addEventListener('click', () => {
       window.history.back();
-    })
+    });
   }
 
   showNotFoundMessage() {

@@ -1,6 +1,10 @@
 export default class Route {
   routeContent = null;
+
+  // Default active route
   activeRoute = 'users';
+  
+  // Global Routes
   pages = {
     users: () => import('../pages/Users.js'),
     user: () => import('../pages/User.js'),
@@ -14,7 +18,7 @@ export default class Route {
   }
 
   showEmptyPage() {
-    import('../pages/Empty.js').then(module => {
+    import('../pages/NotFound.js').then(module => {
       const emptyPage = new module.default();
       this.routeContent.innerHTML = emptyPage.initTemplate();
     })    

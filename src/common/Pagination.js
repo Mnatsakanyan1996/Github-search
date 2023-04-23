@@ -18,6 +18,7 @@ export default class Pagination {
     this.checkPaginationBtnStatus();
   }
 
+  // This function checks the pagination of the next and previous buttons to disable the state
   checkPaginationBtnStatus() {
     if (!this.btnNext || !this.btnPrev) return;
 
@@ -51,14 +52,6 @@ export default class Pagination {
 
     this.checkPaginationBtnStatus();
   };
-
-  toggleNoDataMessage(state) {
-    if (state) {
-      this.noData?.classList.add('show');
-    } else {
-      this.noData?.classList.remove('show');
-    }
-  }
 
   updateTotalCount(totalCount) {
     this.totalCount = totalCount;
