@@ -20,12 +20,12 @@ export default class Route {
     })    
   }
 
-  addActiveClass(activeRoute) {
+  addActiveClass(route) {
     const oldRoute = document.getElementById(`link-${this.activeRoute}`);
-    const activeElement = document.getElementById(`link-${activeRoute}`);
+    const activeElement = document.getElementById(`link-${route}`);
     oldRoute?.classList.remove('active');
     activeElement?.classList.add('active');
-    this.activeRoute = activeRoute;
+    this.activeRoute = route;
   }
   
   loadPage(page) {

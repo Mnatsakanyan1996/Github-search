@@ -4,9 +4,6 @@ export default class Pagination {
   maxPageCount = 0;
   maxItemCount = 20;
 
-  btnNext;
-  btnPrev;
-
   constructor() { }
 
   initPagination() {

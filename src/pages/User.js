@@ -3,6 +3,7 @@ import { getParameterByName } from '../utils/helpers.js';
 import PageTemplate from '../templates/PageTemplate.js';
 import RepoTemplate from '../templates/RepoTemplate.js';
 import UserInfoTemplate from '../templates/UserInfoTemplate.js';
+import { USER_API } from '../constants/api.js';
 
 export default class UserDetailsPage extends BasicPageClass {
   constructor() {
@@ -22,8 +23,8 @@ export default class UserDetailsPage extends BasicPageClass {
     const userName = getParameterByName('userName');
 
     Promise.all([
-      this.fetchService.getData(`https://api.github.com/users/${userName}`),
-      this.fetchService.getData(`https://api.github.com/users/${userName}/repos`),
+      this.fetchService.getData(`${USER_API}${userName}`),
+      this.fetchService.getData(`${USER_API}${userName}/repos`),
     ]).then(([details, repos]) => {
 
       if (details?.message === 'Not Found' || repos?.message === 'Not Found') {
