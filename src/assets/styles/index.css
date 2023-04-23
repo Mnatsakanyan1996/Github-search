@@ -1,8 +1,8 @@
-/* Global - start */
-
+/* Global styes */
 body {
   margin: 0;
-  background-color: #f6f8fa;
+  background-color: #0D1117;
+  color: #fff;
 }
 
 * {
@@ -13,13 +13,16 @@ body {
   border-radius: 0;
   background: none;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
 }
 
-.page-template {
-  padding: 20px;
-  height: 100vh;
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
 
+/* Loader styles */
 #loader-box {
   position: absolute;
   left: 0;
@@ -58,56 +61,79 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* Loader styles - end */
 
 /* Global - end */
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0 5% 2% 5%;
+}
+
+#route-content {
+  height: calc(100% - 60px);
+}
+
+.page-template {
+  padding-top: 20px;
+}
 
 /* Navigation start */
 
 .navigation {
   width: 100%;
-  background-color: #f6f8fa;
-  padding: 20px;
-  border-bottom: 1px solid black;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .navigation > a {
-  margin-right: 20px;
-}
-
-.navigation > a > button {
-  background-color: transparent;
-  border-bottom: 1px solid black;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #DEDEDE;
   font-size: 20px;
+  color: #fff;
 }
 
-.navigation > a > button:hover {
+.navigation > a:hover {
   cursor: pointer;
-  border-color: #fd8c73;
+  border-color: #fbab99;
 }
 
-.navigation > a > .active {
+.navigation > a.active {
   border-color: #fd8c73;
   font-weight: bold;
 }
 
 /* Navigation end */
 
-/* Users */
-
+/* Search box */
 .search-box {
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 10px;
+  display: flex;
   margin-bottom: 20px;
 }
 
 .search-box > input {
-  width: 100%;
+  width: 38%;
+  margin-right: 2%;
+  border: 1px solid;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
 }
+
+.search-box > button {
+  width: 10%;
+  background-color: #F78166;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* Search box - end  */
 
 #no-data {
   display: none;
@@ -130,10 +156,24 @@ body {
   opacity: 0.5;
 }
 
+.pagination-control > button {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.pagination-control > button:hover {
+  cursor: pointer;
+  color: #F78166;
+}
+
+/* Users start */
+
 .user-item {
   display: flex;
   margin-bottom: 25px;
-  border: 1px solid;
+  border: 1px solid #DEDEDE;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .user-item > img {
@@ -151,19 +191,49 @@ body {
   border-bottom: 1px solid;
 }
 
-#user-avatar {
-  margin-right: 25px;
+#user-info {
+  display: flex;
+  justify-content: center;
 }
 
-#user-avatar > img {
+.user-main-info {
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+.user-main-info > img {
   height: 200px;
   border-radius: 50%;
 }
 
-#user-info {
+.user-description h4 {
+  margin-top: 5px;
+  color: #DEDEDE;
   display: flex;
-  flex-direction: column;
+}
+
+.user-description > .subscriptions {
+  display: flex;
+}
+
+.user-description > .subscriptions > h4 {
+  margin-right: 10px;
+}
+
+.user-description span {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  margin-right: 10px;
+}
+
+#back-btn {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+#back-btn:hover {
+  color: #F78166;
 }
 
 /* User details - end */
@@ -172,17 +242,28 @@ body {
 .repo-item {
   display: flex;
   margin-bottom: 25px;
-  border: 1px solid;
+  border: 1px solid #DEDEDE;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .repo-item > img {
-  width: 50px;
+  height: 80px;
   margin-right: 25px;
+  border-radius: 50%;
 }
 
 .repo-info {
   display: flex;
   flex-direction: column;
+}
+
+.repo-info > .description {
+  margin-top: 15px;
+}
+
+.repo-info > .start-count {
+  margin-top: 10px;
 }
 
 /* Repos - end */

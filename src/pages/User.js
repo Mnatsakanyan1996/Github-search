@@ -11,6 +11,13 @@ export default class UserDetailsPage extends BasicPageClass {
     this.getUserDetails();
   }
 
+  onInit() {
+    const backBtn = document.getElementById('back-btn');
+    backBtn.addEventListener('click', () => {
+      window.history.back();
+    })
+  }
+
   showNotFoundMessage() {
     const userNotFound = document.getElementById('user_not_found');
     userNotFound.innerHTML = `User not found`;
@@ -26,7 +33,6 @@ export default class UserDetailsPage extends BasicPageClass {
       this.fetchService.getData(`${USER_API}${userName}`),
       this.fetchService.getData(`${USER_API}${userName}/repos`),
     ]).then(([details, repos]) => {
-
       if (details?.message === 'Not Found' || repos?.message === 'Not Found') {
         this.showNotFoundMessage();
         return;
@@ -34,11 +40,6 @@ export default class UserDetailsPage extends BasicPageClass {
 
       const userInfo = document.getElementById('user-info');
       userInfo.innerHTML = UserInfoTemplate(details);
-
-      const userAvatar = document.getElementById('user-avatar');
-      userAvatar.innerHTML = `
-        <img src=${details.avatar_url} />
-      `;
 
       const resultCount = document.getElementById('result-count');
       resultCount.innerHTML = `${repos.length} results`;
@@ -68,9 +69,10 @@ export default class UserDetailsPage extends BasicPageClass {
   template = `
     <div class="user-details-page">
       <div id="user_not_found"></div>
+
+      <button id="back-btn">&#11013; Back to Users</button>
       
       <div class="user-details">
-        <div id="user-avatar"></div>
         <div id="user-info"></div>
       </div>
 

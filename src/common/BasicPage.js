@@ -13,14 +13,20 @@ export default class BasicPageClass extends Pagination {
 
   addEventListenerForSearchBox() {
     this.searchInput = document.getElementById('search-input');
-    this.searchInput?.addEventListener('keypress', this.search);
+    this.searchBtn = document.getElementById('search-btn');
+    this.searchInput?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && this.searchInput.value) {
+        this.search();
+      }
+    });
+    this.searchBtn?.addEventListener('click', () => {
+      this.searchInput.value && this.search();
+    });
   }
 
-  search = (e) => {
-    if (e.key === 'Enter' && this.searchInput.value) {
-      this.searchQuery = this.searchInput.value;
-      this.getList();
-    }
+  search() {
+    this.searchQuery = this.searchInput.value;
+    this.getList();
   };
 
   showLoader() {
@@ -40,7 +46,8 @@ export default class BasicPageClass extends Pagination {
     this.updateTotalCount(data.total_count);
 
     const resultCount = document.getElementById('result-count');
-    resultCount.innerHTML = `${data.items.length} (${data.total_count}) results`;
+    const prevItemCount = (this.currentPage - 1) * this.maxItemCount;
+    resultCount.innerHTML = `${prevItemCount + 1} - ${prevItemCount + data.items.length} of ${data.total_count} items`;
 
     const resultListElement = document.getElementById('result-list');
     resultListElement.replaceChildren();

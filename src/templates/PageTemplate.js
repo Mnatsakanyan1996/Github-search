@@ -6,11 +6,11 @@ export default ({ searchPlaceholder = 'Search', noDataMessage = 'No data', showS
     ${showSearchBox ? SearchBoxTemplate(searchPlaceholder) : ''}
 
     <div class="action-bar">
-      <h2 id="result-count">0 results</h2>
+      <h4 id="result-count">0 items</h4>
 
       <div class="pagination-control">
-        <button id="btn-prev">Prev</button>
-        <button id="btn-next">next</button>
+        <button id="btn-prev">< Prev</button>
+        <button id="btn-next">Next ></button>
       </div>
     </div>
 

@@ -1,11 +1,12 @@
 export default (repository) => `
-  <a href="${repository.html_url}">
-    <div class="repo-item">
-      <img src="${repository.owner.avatar_url}" />
-      <div class="repo-info">
-        <h1>${repository.full_name}</h1>
-        <h2>${repository.description || ''}</h2>
-      </div>
-    </div>
-  </a>
+<div class="repo-item">
+  <img src="${repository.owner.avatar_url}" />
+  <div class="repo-info">
+    <a href="${repository.html_url}">
+      <h2>${repository.full_name}</h2>
+    </a>
+    <h4 class="description">${repository.description || ''}</h4>
+    <p class="start-count">&#11088; ${repository.stargazers_count}</p>
+  </div>
+</div>
 `;
