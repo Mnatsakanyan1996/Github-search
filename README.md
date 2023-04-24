@@ -3,7 +3,9 @@
 This is a web application that allows users to view information about GitHub users and repositories.
 The application prompts the user to enter a GitHub username and retrieves information about the user's repositories using the GitHub API.
 
-The application is built using JavaScript, HTML, and CSS, and does not use any external libraries or frameworks.
+The application uses the **Factory and Template design patterns** to dynamically generate pages.
+
+The application is built using **JavaScript, HTML, and CSS,** and does not use any external libraries or frameworks.
 
 ## Features
 Prompts the user to enter a GitHub username
