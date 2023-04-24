@@ -19,7 +19,7 @@ export default class Route {
 
   showEmptyPage() {
     import('../pages/NotFound.js').then(module => {
-      const emptyPage = new module.default();
+      const emptyPage = module.default;
       this.routeContent.innerHTML = emptyPage.initTemplate();
     })    
   }
@@ -37,7 +37,7 @@ export default class Route {
     const pageModule = this.pages[page];
     if (pageModule) {
       pageModule().then((module) => {
-        const page = new module.default();
+        const page = module.default;
         this.routeContent.innerHTML = page.initTemplate();
       }).catch(() => {
         this.showEmptyPage();

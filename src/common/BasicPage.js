@@ -3,9 +3,11 @@ import Pagination from './Pagination.js';
 
 export default class BasicPageClass extends Pagination {
 
-  constructor(getListApi, templateItem) {
+  constructor(template, templateItem, getListApi) {
     super();
     this.fetchService = new Fetch();
+
+    this.template = template;
 
     this.getListApi = getListApi;
     this.templateItem = templateItem;
@@ -66,7 +68,7 @@ export default class BasicPageClass extends Pagination {
       resultListElement.appendChild(userItem);
     });
   }
-  
+
   async getList() {
     this.showLoader();
     this.toggleNoDataMessage(false);
@@ -78,7 +80,7 @@ export default class BasicPageClass extends Pagination {
 
     // this function calculates the max page count and updates the pagination buttons state
     this.updateTotalCount(data.total_count);
-    
+
     if (data?.items?.length) {
       // Show search results
       this.updateSearchResultInView(data.items);
@@ -89,7 +91,7 @@ export default class BasicPageClass extends Pagination {
     this.hideLoader();
   }
 
-  initTemplate () {
+  initTemplate() {
     setTimeout(() => {
       this.initPagination();
       this.addEventListenerForSearchBox();
