@@ -1,19 +1,69 @@
-import Fetch from '../utils/Fetch.js';
-import Pagination from './Pagination.js';
+import BasicClass from './Base.js';
 
-export default class BasicPageClass extends Pagination {
+export default class BasePage extends BasicClass {
+  totalCount = 0;
+  currentPage = 1;
+  maxPageCount = 0;
+  maxItemCount = 20;
 
   constructor(template, templateItem, getListApi) {
     super();
-    this.fetchService = new Fetch();
 
     this.template = template;
 
     this.getListApi = getListApi;
     this.templateItem = templateItem;
+  }
 
-    this.routeContent = document.getElementById('route-content');
-    this.loaderBox = document.getElementById('loader-box');
+  initPagination() {
+    this.btnNext = document.getElementById('btn-next');
+    this.btnNext?.addEventListener('click', this.nextPage);
+
+    this.btnPrev = document.getElementById('btn-prev');
+    this.btnPrev?.addEventListener('click', this.prevPage);
+
+    this.checkPaginationBtnStatus();
+  }
+
+  // This function checks the pagination of the next and previous buttons to disable the state
+  checkPaginationBtnStatus() {
+    if (!this.btnNext || !this.btnPrev) return;
+
+    if (this.currentPage < this.maxPageCount) {
+      this.btnNext.classList.remove('disabled');
+    } else {
+      this.btnNext.classList.add('disabled');
+    }
+
+    if (this.currentPage === 1) {
+      this.btnPrev.classList.add('disabled');
+    } else {
+      this.btnPrev.classList.remove('disabled');
+    }
+  }
+
+  nextPage = () => {
+    if (this.currentPage < this.maxPageCount) {
+      this.currentPage++;
+      this.getList();
+    }
+
+    this.checkPaginationBtnStatus();
+  };
+
+  prevPage = () => {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getList();
+    }
+
+    this.checkPaginationBtnStatus();
+  };
+
+  updateTotalCount(totalCount) {
+    this.totalCount = totalCount;
+    this.maxPageCount = Math.ceil(totalCount / this.maxItemCount);
+    this.checkPaginationBtnStatus();
   }
 
   // Handle search box functional
@@ -34,24 +84,6 @@ export default class BasicPageClass extends Pagination {
     this.searchQuery = this.searchInput.value;
     this.getList();
   };
-
-  // this method show loader
-  showLoader() {
-    this.loaderBox.classList.add('show');
-  }
-
-  // this method hide loader
-  hideLoader() {
-    this.loaderBox.classList.remove('show');
-  }
-
-  toggleNoDataMessage(state) {
-    if (state) {
-      this.noData?.classList.add('show');
-    } else {
-      this.noData?.classList.remove('show');
-    }
-  }
 
   updateResultCountInView(dataLength, totalCount) {
     const resultCount = document.getElementById('result-count');
@@ -90,13 +122,4 @@ export default class BasicPageClass extends Pagination {
 
     this.hideLoader();
   }
-
-  initTemplate() {
-    setTimeout(() => {
-      this.initPagination();
-      this.addEventListenerForSearchBox();
-      this.onInit?.();
-    }, 0);
-    return this.template;
-  };
 }

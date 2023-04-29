@@ -1,4 +1,4 @@
-import BasicPageClass from '../common/BasicPage.js';
+import BasicClass from '../common/Base.js';
 
 import PageTemplate from '../templates/PageTemplate.js';
 import RepoTemplate from '../templates/RepoTemplate.js';
@@ -7,7 +7,7 @@ import UserInfoTemplate from '../templates/UserInfoTemplate.js';
 import { USER_API } from '../constants/api.js';
 import { getParameterByName } from '../utils/helpers.js';
 
-export default class UserDetailsPage extends BasicPageClass {
+export default class UserDetailsPage extends BasicClass {
   constructor() {
     super();
     this.getUserDetails();
@@ -83,6 +83,7 @@ export default class UserDetailsPage extends BasicPageClass {
         searchPlaceholder: 'Enter repository name',
         noDataMessage: 'Your search did not match any repositories',
         showSearchBox: false,
+        paginationControl: false,
       })}
     </div>
   `;

@@ -1,6 +1,12 @@
 import SearchBoxTemplate from './SearchBoxTemplate.js';
+import PaginationControlTemplate from './PaginationControlTemplate.js';
 
-export default ({ searchPlaceholder = 'Search', noDataMessage = 'No data', showSearchBox = true }) => `
+export default ({
+  searchPlaceholder = 'Search',
+  noDataMessage = 'No data',
+  showSearchBox = true,
+  paginationControl = true,
+}) => `
   <div class="page-template">
 
     ${showSearchBox ? SearchBoxTemplate(searchPlaceholder) : ''}
@@ -8,10 +14,7 @@ export default ({ searchPlaceholder = 'Search', noDataMessage = 'No data', showS
     <div class="action-bar">
       <h4 id="result-count">0 items</h4>
 
-      <div class="pagination-control">
-        <button id="btn-prev">< Prev</button>
-        <button id="btn-next">Next ></button>
-      </div>
+      ${paginationControl ? PaginationControlTemplate() : ''}
     </div>
 
     <div id="result-list"></div>

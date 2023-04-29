@@ -1,3 +1,11 @@
-import { NotFoundPage } from './index.js'
+import BasePage from '../common/BasePage.js';
 
-export default NotFoundPage;
+import NotFoundTemplate from '../templates/NotFoundTemplate.js';
+
+const template = NotFoundTemplate();
+
+export default class NotFundPage extends BasePage {
+  constructor() {
+    super(template);
+  }
+};
